@@ -269,7 +269,7 @@ uint8_t bcm2835_gpio_lev(uint8_t pin)
 }
 
 /* See if an event detection bit is set
-// Sigh cant support interrupts yet
+// Sigh can't support interrupts yet
 */
 uint8_t bcm2835_gpio_eds(uint8_t pin)
 {
@@ -457,7 +457,7 @@ void bcm2835_delayMicroseconds(uint64_t micros)
 	
     if (debug)
     {
-	/* Cant access sytem timers in debug mode */
+	/* Can't access system timers in debug mode */
 	printf("bcm2835_delayMicroseconds %lld\n", (long long int) micros);
 	return;
     }
@@ -621,7 +621,7 @@ uint8_t bcm2835_spi_transfer(uint8_t value)
     uint32_t ret;
 
     /* This is Polled transfer as per section 10.6.1
-    // BUG ALERT: what happens if we get interupted in this section, and someone else
+    // BUG ALERT: what happens if we get interrupted in this section, and someone else
     // accesses a different peripheral? 
     // Clear TX and RX fifos
     */
@@ -659,7 +659,7 @@ void bcm2835_spi_transfernb(char* tbuf, char* rbuf, uint32_t len)
     uint32_t RXCnt=0;
 
     /* This is Polled transfer as per section 10.6.1
-    // BUG ALERT: what happens if we get interupted in this section, and someone else
+    // BUG ALERT: what happens if we get interrupted in this section, and someone else
     // accesses a different peripheral? 
     */
 
@@ -701,7 +701,7 @@ void bcm2835_spi_writenb(const char* tbuf, uint32_t len)
     uint32_t i;
 
     /* This is Polled transfer as per section 10.6.1
-    // BUG ALERT: what happens if we get interupted in this section, and someone else
+    // BUG ALERT: what happens if we get interrupted in this section, and someone else
     // accesses a different peripheral?
     // Answer: an ISR is required to issue the required memory barriers.
     */
@@ -1539,7 +1539,7 @@ void bcm2835_pwm_set_mode(uint8_t channel, uint8_t markspace, uint8_t enabled)
 	control &= ~BCM2835_PWM1_ENABLE;
     }
 
-  /* If you use the barrier here, wierd things happen, and the commands dont work */
+  /* If you use the barrier here, weird things happen, and the commands don't work */
   bcm2835_peri_write_nb(bcm2835_pwm + BCM2835_PWM_CONTROL, control);
   /*  bcm2835_peri_write_nb(bcm2835_pwm + BCM2835_PWM_CONTROL, BCM2835_PWM0_ENABLE | BCM2835_PWM1_ENABLE | BCM2835_PWM0_MS_MODE | BCM2835_PWM1_MS_MODE); */
 

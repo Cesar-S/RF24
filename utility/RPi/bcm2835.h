@@ -96,7 +96,7 @@
   physical address 0x20nnnnnn.
   
   On RPI 2, the peripheral addresses are different and the bcm2835 library gets them 
-  from reading /proc/device-tree/soc/ranges. This is only availble with recent versions of the kernel on RPI 2.
+  from reading /proc/device-tree/soc/ranges. This is only available with recent versions of the kernel on RPI 2.
   
   After initialisation, the base address of the various peripheral 
   registers are available with the following
@@ -118,7 +118,7 @@
   You should also ensure you are using the latest version of Linux. The library has been tested on RPI2
   with 2015-02-16-raspbian-wheezy and ArchLinuxARM-rpi-2 as of 2015-03-29.
 
-  When device tree suport is enabled, the file /proc/device-tree/soc/ranges will appear in the file system, 
+  When device tree support is enabled, the file /proc/device-tree/soc/ranges will appear in the file system, 
   and the bcm2835 module relies on its presence to correctly run on RPI2 (it is optional for RPI1). 
   Without device tree support enabled and the presence of this file, it will not work on RPI2.
 
@@ -151,11 +151,11 @@
   allowing you to send and received data by SPI (Serial Peripheral Interface).
   For more information about SPI, see http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus
   
-  When bcm2835_spi_begin() is called it changes the bahaviour of the SPI interface pins from their 
+  When bcm2835_spi_begin() is called it changes the behaviour of the SPI interface pins from their 
   default GPIO behaviour in order to support SPI. While SPI is in use, you will not be able 
   to control the state of the SPI pins through the usual bcm2835_spi_gpio_write().
   When bcm2835_spi_end() is called, the SPI pins will all revert to inputs, and can then be
-  configured and controled with the usual bcm2835_gpio_* calls.
+  configured and controlled with the usual bcm2835_gpio_* calls.
   
   The Raspberry Pi GPIO pins used for SPI are:
    
@@ -169,7 +169,7 @@
   you should not expect to actually achieve those sorts of speeds with the RPi wiring. Our tests on RPi 2 show that the
   SPI CLK line when unloaded has a resonant frequency of about 40MHz, and when loaded, the MOSI and MISO lines
   ring at an even lower frequency. Measurements show that SPI waveforms are very poor and unusable at 62 and 125MHz.
-  Dont expect any speed faster than 31MHz to work reliably.
+  Don't expect any speed faster than 31MHz to work reliably.
 
   The bcm2835_aux_spi_* functions allow you to control the BCM 2835 SPI1 interface,
   allowing you to send and received data by SPI (Serial Peripheral Interface).
@@ -197,7 +197,7 @@
   The BCM2835 supports hardware PWM on a limited subset of GPIO pins. This bcm2835 library provides 
   functions for configuring and controlling PWM output on these pins.
   
-  The BCM2835 contains 2 independent PWM channels (0 and 1), each of which be connnected to a limited subset of 
+  The BCM2835 contains 2 independent PWM channels (0 and 1), each of which be connected to a limited subset of 
   GPIO pins. The following GPIO pins may be connected to the following PWM channels (from section 9.5):
   \code
   GPIO PIN    RPi pin  PWM Channel    ALT FUN
@@ -270,7 +270,7 @@
   real-time timing constraints from such programs. In particular, there is no guarantee that the 
   bcm2835_delay() and bcm2835_delayMicroseconds() will return after exactly the time requested. 
   In fact, depending on other activity on the host, IO etc, you might get significantly longer delay times
-  than the one you asked for. So please dont expect to get exactly the time delay you request.
+  than the one you asked for. So please don't expect to get exactly the time delay you request.
   
   Arjan reports that you can prevent swapping on Linux with the following code fragment:
   
@@ -399,7 +399,7 @@
 
   \version 1.23 Added bcm2835_i2c_set_baudrate and bcm2835_i2c_read_register_rs. 
   Improvements to bcm2835_i2c_read and bcm2835_i2c_write functions
-  to fix ocasional reads not completing. Patched by Mark Dootson.
+  to fix occasional reads not completing. Patched by Mark Dootson.
 
   \version 1.24 Mark Dootson p[atched a problem with his previously submitted code
   under high load from other processes. 
@@ -411,7 +411,7 @@
 
   \version 1.27 bcm2835_gpio_set_pad() no longer needs BCM2835_PAD_PASSWRD: it is
   now automatically included.
-  Added suport for PWM mode with bcm2835_pwm_* functions.
+  Added support for PWM mode with bcm2835_pwm_* functions.
 
   \version 1.28 Fixed a problem where bcm2835_spi_writenb() would have problems with transfers of more than
   64 bytes dues to read buffer filling. Patched by Peter Würtz.
@@ -446,7 +446,7 @@
 
   \version 1.39 Beta version of RPi2 compatibility. Not tested here on RPi2 hardware. 
   Testers please confirm correct operation on RPi2.<br>
-  Unneccessary 'volatile' qualifiers removed from all variables and signatures.<br>
+  Unnecessary 'volatile' qualifiers removed from all variables and signatures.<br>
   Removed unsupportable PWM dividers, based on a report from Christophe Cecillon.<br>
   Minor improvements to spi.c example.<br>
 
@@ -467,8 +467,8 @@
   Reported and patched by Lars Christensen.<br>
   Testing on RPI 2, with ArchLinuxARM-rpi-2-latest and 2015-02-16-raspbian-wheezy.<br>
 
-  \version 1.44 Added documention about the need for device tree to be enabled on RPI2.<br>
-  Improvements to detection of availablity of DMB instruction based on value of __ARM_ARCH macro.<br>
+  \version 1.44 Added documentation about the need for device tree to be enabled on RPI2.<br>
+  Improvements to detection of availability of DMB instruction based on value of __ARM_ARCH macro.<br>
 
   \version 1.45 Fixed an error in the pad group offsets that would prevent bcm2835_gpio_set_pad() 
   and bcm2835_gpio_pad() working correctly with non-0 pad groups. Reported by Guido.
@@ -775,10 +775,10 @@ typedef enum
   Not all pins on the RPi 26 bin IDE plug are connected to GPIO pins
   and some can adopt an alternate function.
   RPi version 2 has some slightly different pinouts, and these are values RPI_V2_*.
-  RPi B+ has yet differnet pinouts and these are defined in RPI_BPLUS_*.
+  RPi B+ has yet different pinouts and these are defined in RPI_BPLUS_*.
   At bootup, pins 8 and 10 are set to UART0_TXD, UART0_RXD (ie the alt0 function) respectively
   When SPI0 is in use (ie after bcm2835_spi_begin()), SPI0 pins are dedicated to SPI
-  and cant be controlled independently.
+  and can't be controlled independently.
   If you are using the RPi Compute Module, just use the GPIO number: there is no need to use one of these
   symbolic names
 */
@@ -1021,8 +1021,8 @@ typedef enum
     BCM2835_SPI_CLOCK_DIVIDER_32    = 32,      /*!< 32 = 7.8125MHz on Rpi2, 12.5MHz on RPI3 */
     BCM2835_SPI_CLOCK_DIVIDER_16    = 16,      /*!< 16 = 15.625MHz on Rpi2, 25MHz on RPI3 */
     BCM2835_SPI_CLOCK_DIVIDER_8     = 8,       /*!< 8 = 31.25MHz on Rpi2, 50MHz on RPI3 */
-    BCM2835_SPI_CLOCK_DIVIDER_4     = 4,       /*!< 4 = 62.5MHz on Rpi2, 100MHz on RPI3. Dont expect this speed to work reliably. */
-    BCM2835_SPI_CLOCK_DIVIDER_2     = 2,       /*!< 2 = 125MHz on Rpi2, 200MHz on RPI3, fastest you can get. Dont expect this speed to work reliably.*/
+    BCM2835_SPI_CLOCK_DIVIDER_4     = 4,       /*!< 4 = 62.5MHz on Rpi2, 100MHz on RPI3. Don't expect this speed to work reliably. */
+    BCM2835_SPI_CLOCK_DIVIDER_2     = 2,       /*!< 2 = 125MHz on Rpi2, 200MHz on RPI3, fastest you can get. Don't expect this speed to work reliably.*/
     BCM2835_SPI_CLOCK_DIVIDER_1     = 1        /*!< 1 = 3.814697260kHz on Rpi2, 6.1035156kHz on RPI3, same as 0/65536 */
 } bcm2835SPIClockDivider;
 
@@ -1140,7 +1140,7 @@ typedef enum
 #define BCM2835_PWM1_MS_MODE    0x8000  /*!< Run in Mark/Space mode */
 #define BCM2835_PWM1_USEFIFO    0x2000  /*!< Data from FIFO */
 #define BCM2835_PWM1_REVPOLAR   0x1000  /*!< Reverse polarity */
-#define BCM2835_PWM1_OFFSTATE   0x0800  /*!< Ouput Off state */
+#define BCM2835_PWM1_OFFSTATE   0x0800  /*!< Output Off state */
 #define BCM2835_PWM1_REPEATFF   0x0400  /*!< Repeat last value if FIFO empty */
 #define BCM2835_PWM1_SERIAL     0x0200  /*!< Run in serial mode */
 #define BCM2835_PWM1_ENABLE     0x0100  /*!< Channel Enable */
@@ -1149,7 +1149,7 @@ typedef enum
 #define BCM2835_PWM_CLEAR_FIFO  0x0040  /*!< Clear FIFO */
 #define BCM2835_PWM0_USEFIFO    0x0020  /*!< Data from FIFO */
 #define BCM2835_PWM0_REVPOLAR   0x0010  /*!< Reverse polarity */
-#define BCM2835_PWM0_OFFSTATE   0x0008  /*!< Ouput Off state */
+#define BCM2835_PWM0_OFFSTATE   0x0008  /*!< Output Off state */
 #define BCM2835_PWM0_REPEATFF   0x0004  /*!< Repeat last value if FIFO empty */
 #define BCM2835_PWM0_SERIAL     0x0002  /*!< Run in serial mode */
 #define BCM2835_PWM0_ENABLE     0x0001  /*!< Channel Enable */
@@ -1188,7 +1188,7 @@ extern "C" {
 #endif
 
     /*! \defgroup init Library initialisation and management
-      These functions allow you to intialise and control the bcm2835 library
+      These functions allow you to initialise and control the bcm2835 library
       @{
     */
 
@@ -1293,8 +1293,8 @@ extern "C" {
     */
     extern void bcm2835_peri_write_nb(volatile uint32_t* paddr, uint32_t value);
 
-    /*! Alters a number of bits in a 32 peripheral regsiter.
-      It reads the current valu and then alters the bits defines as 1 in mask, 
+    /*! Alters a number of bits in a 32 peripheral register.
+      It reads the current value and then alters the bits defines as 1 in mask, 
       according to the bit value in value. 
       All other bits that are 0 in the mask are unaffected.
       Use this to alter a subset of the bits in a register.
@@ -1375,7 +1375,7 @@ extern "C" {
     extern uint32_t bcm2835_gpio_eds_multi(uint32_t mask);
 
     /*! Sets the Event Detect Status register for a given pin to 1, 
-      which has the effect of clearing the flag. Use this afer seeing
+      which has the effect of clearing the flag. Use this after seeing
       an Event Detect Status on the pin.
       \param[in] pin GPIO number, or one of RPI_GPIO_P1_* from \ref RPiGPIOPin.
     */
@@ -1566,7 +1566,7 @@ extern "C" {
     /*! Start SPI operations.
       Forces RPi SPI0 pins P1-19 (MOSI), P1-21 (MISO), P1-23 (CLK), P1-24 (CE0) and P1-26 (CE1)
       to alternate function ALT0, which enables those pins for SPI interface.
-      You should call bcm2835_spi_end() when all SPI funcitons are complete to return the pins to 
+      You should call bcm2835_spi_end() when all SPI functions are complete to return the pins to 
       their default functions.
       \sa  bcm2835_spi_end()
       \return 1 if successful, 0 otherwise (perhaps because you are not running as root)
