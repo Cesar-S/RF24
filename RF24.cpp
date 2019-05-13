@@ -733,7 +733,7 @@ void RF24::startListening(void)
   write_register(NRF_CONFIG, read_register(NRF_CONFIG) | _BV(PRIM_RX));
   write_register(NRF_STATUS, _BV(RX_DR) | _BV(TX_DS) | _BV(MAX_RT) );
   ce(HIGH);
-  // Restore the pipe0 adddress, if exists
+  // Restore the pipe0 address, if exists
   if (pipe0_reading_address[0] > 0){
     write_register(RX_ADDR_P0, pipe0_reading_address, addr_width);	
   }else{
@@ -770,7 +770,7 @@ void RF24::stopListening(void)
   write_register(NRF_CONFIG, ( read_register(NRF_CONFIG) ) & ~_BV(PRIM_RX) );
  
   #if defined (RF24_TINY) || defined (LITTLEWIRE)
-  // for 3 pins solution TX mode is only left with additonal powerDown/powerUp cycle
+  // for 3 pins solution TX mode is only left with additional powerDown/powerUp cycle
   if (ce_pin == csn_pin) {
     powerDown();
 	powerUp();

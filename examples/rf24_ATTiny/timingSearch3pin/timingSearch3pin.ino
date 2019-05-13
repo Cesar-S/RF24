@@ -384,7 +384,7 @@ void loop(void) {
     advice[k] = limit[k] + (limit[k] / 10);
     limit[k] = 100;
   }
-  Serial.print("Adviced Settle times are: csnHigh=");
+  Serial.print("Advised Settle times are: csnHigh=");
   Serial.print(advice[0],DEC);
   Serial.print(" csnLow="); 
   Serial.println(advice[1],DEC);

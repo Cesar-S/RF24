@@ -64,7 +64,7 @@ void SPI::init(uint32_t speed)
 	 * spi mode
 	 */
 	ret = ioctl(this->fd, SPI_IOC_WR_MODE, &mode);
-	if (ret == -1) throw SPIException("cant set WR spi mode");
+	if (ret == -1) throw SPIException("can't set WR spi mode");
 	/*{
 		perror("can't set spi mode");
 		abort();

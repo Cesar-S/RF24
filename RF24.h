@@ -1966,7 +1966,7 @@ private:
  * @note Note about the millisecond functionality:<br>
  * 
  * 	The millisecond functionality is based on the TCE0 so don't use these pins as IO.<br>
- * 	The operating frequency of the uC is 32MHz. If you have other frequency change the TCE0 registers appropriatly in function **__start_timer()** in **compatibility.c** file for your frequency. 
+ * 	The operating frequency of the uC is 32MHz. If you have other frequency change the TCE0 registers appropriately in function **__start_timer()** in **compatibility.c** file for your frequency. 
  *
  * @page Portability RF24 Portability
  *
